@@ -1,6 +1,6 @@
 <mat-action-list *ngIf="rooms.length">
-    <ng-container *ngFor="let room of rooms">
-        <button mat-list-item [routerLink]="['/room/info', room.name]">{{room.name}}</button>
+    <ng-container *ngFor="let room of rooms; let id = index">
+        <button mat-list-item [routerLink]="['/room/info', room.name]">{{room.name}} ({{roomInfos[id]}})</button>
     </ng-container>
 </mat-action-list>
 

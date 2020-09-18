@@ -6,6 +6,7 @@ import {environment} from '@env';
 import {RoomModule} from '@modules/room/room.module';
 import {RoomModel} from '@app/models/room';
 import {Observable} from 'rxjs';
+import {UserModel} from '@app/models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -33,12 +34,12 @@ export class RoomService extends ApiService {
     });
   }
 
-  getRoomInfoByName(name: string) {
+  getUsersInRoom(name: string) {
     const url = `${environment.APIHOST}/room-info?room=${name}`;
-    return new Observable<RoomModel>((observer) => {
+    return new Observable<UserModel[]>((observer) => {
       this.get(url).subscribe(data => {
-        const room: RoomModel = new RoomModel(data[0]);
-        observer.next(room);
+        const users = data.map(itm => new UserModel(itm));
+        observer.next(users);
         observer.complete();
       }, error => {
         observer.error(error);

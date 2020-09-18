@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {RoomService} from '@app/services/room.service';
 import {RoomModel} from '@app/models/room';
+import {UserModel} from '@app/models/user';
 
 @Component({
   selector: 'app-room-detail',
@@ -9,7 +10,7 @@ import {RoomModel} from '@app/models/room';
 })
 export class RoomDetailComponent implements OnInit {
 
-  room: RoomModel;
+  users: UserModel[];
 
   constructor(
     private route: ActivatedRoute,
@@ -19,8 +20,8 @@ export class RoomDetailComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.params.id;
-    this.roomSrv.getRoomInfoByName(id).subscribe(room => {
-      this.room = room;
+    this.roomSrv.getUsersInRoom(id).subscribe(users => {
+      this.users = users;
     });
   }
 
