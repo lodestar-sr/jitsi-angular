@@ -2,9 +2,9 @@
     <a routerLink="/room/list">Back</a>
 </div>
 
-<div class="mb-3" *ngFor="let user of users">
+<div class="mb-3" *ngFor="let user of users; let id = index">
     <mat-list>
-        <mat-list-item> JID: {{user.jID}} </mat-list-item>
+        <mat-list-item> {{id + 1}}. JID: {{user.jID}} </mat-list-item>
         <mat-list-item> Display Name: {{user.displayName}} </mat-list-item>
         <mat-list-item> Email: {{user.email}} </mat-list-item>
     </mat-list>
