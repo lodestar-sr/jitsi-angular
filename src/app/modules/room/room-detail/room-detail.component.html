@@ -1,0 +1,13 @@
+<div class="mb-3">
+    <a routerLink="/room/list">Back</a>
+</div>
+
+<mat-list *ngIf="room">
+    <mat-list-item> JID: {{room.jID}} </mat-list-item>
+    <mat-list-item> Display Name: {{room.displayName}} </mat-list-item>
+    <mat-list-item> Email: {{room.email}} </mat-list-item>
+</mat-list>
+
+<div *ngIf="!room">
+    No room details
+</div>
